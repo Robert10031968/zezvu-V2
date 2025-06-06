@@ -16,72 +16,74 @@ export default function ZezvuLanding() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Dummy action for now
     console.log("Email submitted:", email)
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 3000)
   }
 
   return (
-    <div className="min-h-screen bg-soft-white font-inter">
-      {/* Header */}
-      <header className="px-6 py-4 bg-soft-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto flex items-center">
-          <Image src="/zezvu-logo.png" alt="ZEZVU" width={300} height={100} className="h-24 w-auto mx-auto mb-6" />
-        </div>
-      </header>
+    <div className="min-h-screen bg-soft-white font-inter flex flex-col items-center px-0 py-0">
 
       {/* Hero Section */}
-      <section className="px-6 py-20 bg-gradient-to-br from-soft-white to-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-dark-charcoal mb-6 font-poppins">
+      <section className="w-full bg-gradient-to-br from-soft-white to-gray-50 pt-0">
+        <div className="flex flex-col items-center text-center max-w-7xl mx-auto pt-0">
+
+          {/* Logo */}
+          <Image
+            src="/zezvu-logo.png"
+            alt="ZEZVU"
+            width={800}
+            height={250}
+            className="h-80 w-auto mb-0"
+          />
+
+          {/* Hero Heading */}
+          <h1 className="text-5xl md:text-6xl font-bold text-dark-charcoal mb-0 font-poppins">
             Break Language Barriers
             <br />
             <span className="text-deep-blue">Instantly</span>
           </h1>
+
+          {/* Hero Subheading */}
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             ZEZVU is the AI-powered translator box that connects between your streaming device and TV, delivering
             real-time subtitles for any content in any language.
           </p>
 
           {/* Email Capture Form */}
-          <div className="max-w-md mx-auto mb-12">
-            <form onSubmit={handleSubmit} className="flex gap-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-deep-blue"
-              />
-              <Button
-                type="submit"
-                className="h-12 px-8 bg-deep-blue hover:bg-blue-700 text-white font-semibold"
-                disabled={isSubmitted}
-              >
-                {isSubmitted ? "Joined!" : "Join Waitlist"}
-              </Button>
-            </form>
-            {isSubmitted && (
-              <p className="text-green-600 mt-2 text-sm">Thank you! We'll notify you when ZEZVU is available.</p>
-            )}
-          </div>
+          <form onSubmit={handleSubmit} className="flex gap-3 justify-center mb-12">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="flex-1 h-12 text-base border-2 border-gray-200 focus:border-deep-blue max-w-md"
+            />
+            <Button
+              type="submit"
+              className="h-12 px-8 bg-deep-blue hover:bg-blue-700 text-white font-semibold"
+              disabled={isSubmitted}
+            >
+              {isSubmitted ? "Joined!" : "Join Waitlist"}
+            </Button>
+          </form>
 
-          {/* HDMI Diagram Placeholder */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-              <img
-                src="/placeholder.svg?height=300&width=800"
-                alt="HDMI Connection Diagram: Streaming Device → ZEZVU Box → TV"
-                className="w-full h-auto rounded-lg"
-              />
-              <p className="text-sm text-gray-500 mt-4">Simple plug-and-play setup</p>
-            </div>
-          </div>
+          {isSubmitted && (
+            <p className="text-green-600 mt-2 text-sm">
+              Thank you! We'll notify you when ZEZVU is available.
+            </p>
+          )}
+
         </div>
       </section>
 
+      {/* HDMI Diagram Placeholder */}
+      <div className="max-w-4xl mx-auto my-8">
+        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+          <img src="/zezvu-hdmi.png" alt="HDMI Diagram" />
+        </div>
+      </div>
       {/* How It Works Section */}
       <section className="px-6 py-20 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -233,11 +235,12 @@ export default function ZezvuLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-8 bg-dark-charcoal">
+      <footer className="px-6 py-8 bg-dark-charcoal w-full">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-400">© 2025 ZEZVU. All rights reserved.</p>
         </div>
       </footer>
+
     </div>
   )
 }
